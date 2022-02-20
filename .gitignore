@@ -1,0 +1,15 @@
+# node_modules
+node_modules/
+
+# temporary backend files
+/server/api/
+/server/handlers/
+/server/middleware/firebase/firebaseConfig.ts
+/server/middleware/firebase/useAuth.ts
+/server/middleware/firebase/useFirestore.ts
+
+# temporary ignoring all the frontend folder
+/frontend/
+
+# temporary
+/customTypes/

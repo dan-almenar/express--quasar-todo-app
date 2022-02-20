@@ -1,0 +1,5 @@
+### About /server/middleware/firebase
+The ***/server/middleware/firebase*** folder files describe the necessary implementations for auth and data storage and management with the Firebase App. It contains the following files:
+- The ***/server/middleware/fireabase/firebaseConfig.ts*** which declares and implements the basic firebase configuration, exporting the Auth and Firestore services. This file has been added to the .gitignore list and will be kept flagged as ignored since it contains sensible data (i.e. FirebaseConfig info).
+- The ***/server/middleware/firebase/useAuth.ts*** file, which handles all user's authentication and account management. This file has been added to the .gitignore list for develpment and will be removed from the ignore list on deployment.
+- The ***/server/middleware/firebase/useFirestore.ts*** file, which handles all data storage and management. This file has been added to the .gitignore list for develpment and will be removed from the ignore list on deployment.s
