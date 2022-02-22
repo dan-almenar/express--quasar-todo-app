@@ -8,17 +8,7 @@ import {
     deleteUser,
     resPassword,
 } from './handlers/users/usersHandlers'
-import { getUserName } from './middleware/firebase/useAuth';
-
-// regex declaration to handle dynamic routes
-const regex = (): string | void => {
-    const userName = getUserName()
-    if (userName != null){
-        return userName
-    } else {
-        return
-    }
-}
+import * as tasks from './handlers/tasks/tasksHandler'
 
 const app: Express = express();
 const port = 3000;
@@ -26,14 +16,22 @@ const date = new Date
 
 // const tasks = require('./routes/api/tasks');
 
-// setting handlers for /users/ routes
+// users management routes
 app.use('/users/signIn', signIn)
 app.use('/users/logIn', logIn)
-app.use(`users/${regex}/updateEmail`, updateEmail)
-app.use(`/users/${regex}/updatePassword`, updatePassword)
-app.use(`/users/${regex}/updateName/`, updateName)
-app.use(`/users/${regex}/deleteUser/`, deleteUser)
+app.use(`users/updateEmail`, updateEmail)
+app.use(`/users/updatePassword`, updatePassword)
+app.use(`/users/updateName/`, updateName)
+app.use(`/users/deleteUser/`, deleteUser)
 app.use('/users/resetPassword', resPassword)
+
+// tasks management routes
+app.get('/', tasks.getTasks)
+app.post('/', tasks.createNewTask)
+app.put('/', tasks.editTask)
+app.put('/', tasks.switchCompletedTask)
+app.delete('/', tasks.deleteTask)
+
 
 app.listen(port, () => {
     console.log(`Server started at ${date.toTimeString()} listening at port: ${port}`)
